@@ -5,25 +5,25 @@ pipeline {
 
     stage('Clone Repo') {
       steps {
-        git 'https://github.com/user/devops-app.git'
+        git 'https://github.com/RushiPatil1881/17march2026.git'
       }
     }
 
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t devops-app .'
+        sh 'docker build -t my-app .'
       }
     }
 
     stage('Tag Image') {
       steps {
-        sh 'docker tag devops-app:latest <ECR_URL>/devops-app:latest'
-      }
+        sh 'docker tag my-app:latest 339772065903.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest' 
+     }
     }
 
     stage('Push to ECR') {
       steps {
-        sh 'docker push <ECR_URL>/devops-app:latest'
+        sh 'docker push 339772065903.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest'
       }
     }
 
